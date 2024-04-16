@@ -1,0 +1,315 @@
+/* -----    GOOGLE FONTS : POPPINS    ----- */
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    width: 100vw;
+    height: 40px;
+    position: relative;
+}
+.navbar {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    background: #efefef;
+    border-bottom: 1px solid #b6b6b6;
+}
+.navbar img {
+    width: 50px;
+}
+.navbar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: #fff;
+    padding: 11px 10px;
+    font-size: 16px;
+    transition: .3s ease-in-out;
+}
+h4 {
+    font-weight: bold;
+}
+.location_box,
+.search_box {
+    border: 2px solid #000;
+    border-radius: 4px;
+    transition: .3s ease-in-out;
+}
+.location_box {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 0 10px;
+    transition: .3s ease-in-out;
+}
+.location_box span {
+    font-size: 15px;
+}
+.search_box {
+    /* width: 60%; */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #002f34;
+    transition: .3s ease-in-out;
+}
+.search_box input {
+    width: 100%;
+    transition: .3s ease-in-out;
+}
+.search_box span {
+    font-size: 20px;
+    padding: 0 15px;
+}
+span {
+    font-size: 23px;
+    transition: .3s ease-in-out;
+}
+.user_div {
+    position: relative;
+}
+.user {
+    /* width: 35px; */
+    padding: 4px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #0085c8;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .3s ease-in-out;
+}
+.dropdown {
+    width: 200px;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 0 2px #000;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 10px;
+    right: 0;
+    overflow: hidden;
+    transition: .3s ease-in-out;
+}
+.dropdown_header {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.dropdown_header span {
+    background: #0085c8;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 50%;
+}
+.username {
+    font-size: 20px;
+    font-weight: bold;
+}
+.logout {
+    font-weight: bold;
+    box-shadow: 0 0 1px #000;
+    padding: 10px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.logout:hover {
+    background: #c80000;
+    color: #fff;
+}
+
+.nav_btn {
+    background: #fff;
+    padding: 6px 25px;
+    border: 5px solid;
+    border-radius: 50px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: .3s ease-in-out;
+}
+
+.bottom_bar {
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: #fff;
+    margin-top: 70px;
+    padding: 5px 10px;
+    box-shadow: 0 0 1px #000;
+    text-wrap: nowrap;
+    transition: .3s ease-in-out;
+}
+.bottom_bar::-webkit-scrollbar{
+    display: none;
+}
+.bottom_bar a {
+    font-size: 14px;
+    color: #000;
+}
+
+/* products_container */
+
+.products_container {
+    padding: 70px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: op 0.5s ease-in-out;
+    transition: .3s ease-in-out;
+}
+@keyframes op {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.products {
+    width: 1150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    transition: .3s ease-in-out;
+}
+.product_box {
+    box-shadow: 0 0 1px #000;
+    padding: 10px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.product_box img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    transition: .3s ease-in-out;
+}
+.box_body {
+    padding: 5px 7px 0px;
+    transition: .3s ease-in-out;
+}
+.productname {
+    max-width: 200px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #696969;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    letter-spacing: 1px;
+    transition: .3s ease-in-out;
+}
+.location {
+    font-size: 13px;
+    color: #777777;
+    transition: .3s ease-in-out;
+}
+
+@media (max-width: 1200px) {
+    .products {
+        width: 880px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .bottom_bar {
+        justify-content: start;
+        padding: 5px 20px;
+    }
+}
+@media (max-width: 900px) {
+
+    .products {
+        width: 650px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .search_box input {
+        padding: 11px 0;
+    }
+    .addProduct_container form {
+        width: 700px;
+    }
+}
+@media (max-width: 796px) {
+    .products {
+        width: 550px;
+    }
+
+    .language_div,
+    .icons {
+        display: none;
+    }
+    .location_box {
+        width: 250px;
+    }
+    .addProduct_container form {
+        width: 550px;
+    }
+    .image_div{
+        flex-direction: column !important;
+        align-items: start;
+    }
+}
+@media (max-width: 600px) {
+    .products {
+        width: 100%;
+        grid-template-columns: 1fr ;
+        padding: 0 15px;
+    }
+    .location_box {
+        display: none;
+        width: 250px;
+    }
+    .navbar{
+        gap: 10px;
+        padding: 10px;
+    }
+    .nav_btn {
+        padding: 3px 10px;
+        border: 3px solid;
+        border-radius: 50px;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    .addProduct_container {
+        width: 100vw;
+        padding: 30px;
+    }
+    .addProduct_container form {
+        width: 100%;
+        padding: 20px;
+        gap: 10px;
+    }
+    .addProduct_container form div input{
+        width: 100%;
+        padding: 10px;
+    }
+    .image_div input{
+        padding: 0 !important;
+    }
+    .preview_images{
+        width: 100% !important;
+    }
+}
