@@ -32,7 +32,7 @@ const Products = () => {
                     <div className="product_box" key={index} onClick={() => handleProductDetail(product._id)}>
                         <img src={`http://localhost:2001/${product.images[0]}`} alt="image" />
                         <div className="box_body">
-                            <h2>₹ 21000</h2>
+                            <h2>₹ {product.price}</h2>
                             <p className="productname">{product.productname}</p>
                             <p className="location">{product.location}</p>
                         </div>

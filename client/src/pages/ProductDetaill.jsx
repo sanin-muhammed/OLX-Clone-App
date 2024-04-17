@@ -13,6 +13,19 @@ const ProductDetaill = () => {
     console.log({ productId });
     const [product, setProduct] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const handleImageIndex = (index) => {
+        setCurrentImageIndex(index);
+    };
+    const settings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        initialSlide:currentImageIndex,
+    };
     useEffect(() => {
         const fetchProductDetails = async () => {
             const response = await getProductDetails(productId);
@@ -22,23 +35,11 @@ const ProductDetaill = () => {
             }
         };
         fetchProductDetails();
-    }, [productId]);
+    }, [productId,currentImageIndex]);
 
-    const settings = {
-        // dots: true,  
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        // appendDots: (dots) => (
-        //     <div>
-        //         <ul className="custom-dots">{dots}</ul>
-        //     </div>
-        // ),
-    };
+   
 
+    console.log(currentImageIndex, "currentIndx");
     return (
         <>
             <Header />
@@ -46,7 +47,7 @@ const ProductDetaill = () => {
                 {product && (
                     <div className="productdetail">
                         <div className="img_div">
-                            <Slider {...settings} initialSlide={currentImageIndex}>
+                            <Slider {...settings} >
                                 {product.images.map((image, index) => (
                                     <div className="main_img" key={index}>
                                         <img src={`http://localhost:2001/${image}`} alt={`image_${index}`} />
@@ -55,7 +56,7 @@ const ProductDetaill = () => {
                             </Slider>
                             <div className="sub_imgs">
                                 {product.images.map((image, index) => (
-                                    <img src={`http://localhost:2001/${image}`} alt={`image_${index}`} key={index} onClick={() => setCurrentImageIndex(index)} />
+                                    <img src={`http://localhost:2001/${image}`} alt={`image_${index}`} key={index} onClick={() => handleImageIndex(index)} />
                                 ))}
                             </div>
                         </div>
