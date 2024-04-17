@@ -12,11 +12,11 @@ exports.post_signup = async (req, res) => {
         console.log("request =>", { username, phoneNumber, email, password });
         const newUser = new Users({ username, email, phoneNumber, password });
         await newUser.save();
-        
+
         const otp = generateOTP();
-        console.log("otp =".bold, otp.yellow);
         otpCache[phoneNumber] = otp; // Store OTP in cache
         console.log("otpCache =".bold, otpCache);
+        console.log("otp =".bold, otp.yellow);
 
         // Send OTP via SMS
         sendOTPviaSMS(phoneNumber, otp);
@@ -52,16 +52,16 @@ exports.post_login = async (req, res) => {
     console.log(req.body);
     try {
         const { phoneNumber, password } = req.body;
-        const userExist = await Users.findOne({ phoneNumber, password });
+        const userExist = await Users.findOne({ phoneNumber, password, verified: true }, { username: 1, email: 1, phoneNumber: 1 });
         console.log("user =", userExist);
         if (userExist) {
             console.log("User is Exist ".blue);
 
             const user = userExist.toObject();
             const Token = createJwtToken(user);
-            console.log("Token =", Token);
+            console.log({ Token });
 
-            res.status(200).json({ Token });
+            res.status(200).json({ status: true, Token });
         } else {
             res.status(401).json({ message: "Invalid phone number or password" });
         }
@@ -72,15 +72,19 @@ exports.verify_otp = async (req, res) => {
     const { otp, source } = req.body;
     console.log(" req body=", req.body);
     try {
-        const userExist = await Users.findOne({ phoneNumber: source });
+        const userExist = await Users.findOne({ phoneNumber: source }, { username: 1, email: 1, phoneNumber: 1 });
+        console.log({ userExist });
         if (userExist) {
             if (otpCache[source] == otp) {
+                console.log("OTP is correct".blue);
+                userExist.verified = true;
+                userExist.save();
                 const user = userExist.toObject();
                 const Token = createJwtToken(user);
-                console.log("Token =".bold, Token);
-                console.log("OTP is correct".blue);
+                console.log({ Token });
+                console.log("OTP varification success".bold.blue);
                 sendMailFunction(userExist.email);
-                res.status(200).json({ Token });
+                res.status(200).json({ status: true, Token });
             } else {
                 console.log("OTP is incorrect".red);
                 res.status(200).json({ status: false, message: "otp is incorrect" });

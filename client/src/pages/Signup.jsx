@@ -74,7 +74,7 @@ const Signup = () => {
         // Send otpData to backend
         const response = await verify_otp(otpData);
         console.log("response =>", response);
-        if (response.Token) {
+        if (response.status) {
             localStorage.setItem('token', response.Token);
             navigate('/')
         } else {

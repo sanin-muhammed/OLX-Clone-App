@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/OLX-Symbol.png";
 import "./style.css";
-import { post_login, verify_otp } from "../Actions/action";
+import { post_login } from "../Actions/action";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -41,10 +41,10 @@ const Login = () => {
             console.log("message");
             setMessage(response.message);
         }
-        if (response.Token) {
-            
-            localStorage.setItem('token', response.Token);
+        if (response.status) {
             navigate('/')
+        } else {
+            setMessage(response.message);
         }
     };
 

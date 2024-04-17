@@ -16,6 +16,10 @@ export const post_login = async (formData) => {
         const response = await axios.post("/api/login", formData);
 
         console.log("Response from backend:",response);
+        if(response.data.Token){
+            console.log('Token set successfully');
+            localStorage.setItem('token', response.data.Token);
+        }
         return response.data;
     } catch (error) {
         console.error("Error:", error.response.data);
@@ -29,6 +33,10 @@ export const verify_otp = async (otpData) => {
     try {
         const response = await axios.post("/api/verify-otp", otpData);
         console.log("Response from backend:",response);
+        if(response.data.Token){
+            console.log('Token set successfully');
+            localStorage.setItem('token', response.data.Token);
+        }
         return response.data;
     } catch (error) {
         console.error("Error:", error.response.data);
