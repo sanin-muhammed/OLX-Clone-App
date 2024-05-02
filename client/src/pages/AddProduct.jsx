@@ -16,6 +16,7 @@ const AddProduct = () => {
 
     // Function to handle file input change
     const handleFileChange = (e) => {
+        setMessage("")
         const selectedImages = Array.from(e.target.files);
         console.log(e.target.value.length);
         console.log({ selectedImages });

@@ -2,14 +2,16 @@ const colors = require("colors");
 const Products = require("../models/products");
 
 exports.addproduct = async (req, res) => {
-    console.log(req.files);
+    console.log("req body =",req.body);
+    console.log("req files =",req.files);
     try {
-        const { productname, category, price, location } = req.body;
-        const images = req.files?.map((file) => file.filename);
-        console.log(images);
+        const { productname, category, price,location } = req.body;
+        const images = req.files?.map((file) => file.location);
+        // console.log(images);
 
         const newProduct = new Products({ productname, category, price, location, images });
         await newProduct.save();
+        console.log('new product =',newProduct);
         console.log("Product added successfully".bold.yellow);
         res.status(200).json({ status: true });
     } catch (error) {

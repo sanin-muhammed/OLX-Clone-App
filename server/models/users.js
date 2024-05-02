@@ -8,12 +8,10 @@ const userSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
         required: true,
-        unique: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true, // Ensure uniqueness of email addresses
         validate: {
             validator: function (value) {
                 // Regular expression for validating email format

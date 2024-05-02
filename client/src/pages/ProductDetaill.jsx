@@ -50,13 +50,13 @@ const ProductDetaill = () => {
                             <Slider {...settings} >
                                 {product.images.map((image, index) => (
                                     <div className="main_img" key={index}>
-                                        <img src={`http://localhost:2001/${image}`} alt={`image_${index}`} />
+                                        <img src={image} alt={`image_${index}`} />
                                     </div>
                                 ))}
                             </Slider>
                             <div className="sub_imgs">
                                 {product.images.map((image, index) => (
-                                    <img src={`http://localhost:2001/${image}`} alt={`image_${index}`} key={index} onClick={() => handleImageIndex(index)} />
+                                    <img src={image} alt={`image_${index}`} key={index} onClick={() => handleImageIndex(index)} />
                                 ))}
                             </div>
                         </div>

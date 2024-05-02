@@ -30,7 +30,7 @@ const Products = () => {
             <div className="products">
                 {products.map((product, index) => (
                     <div className="product_box" key={index} onClick={() => handleProductDetail(product._id)}>
-                        <img src={`http://localhost:2001/${product.images[0]}`} alt="image" />
+                        <img src={product.images[0]} alt="product_image" />
                         <div className="box_body">
                             <h2>₹ {product.price}</h2>
                             <p className="productname">{product.productname}</p>

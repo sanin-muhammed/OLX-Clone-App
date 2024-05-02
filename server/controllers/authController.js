@@ -1,10 +1,14 @@
 const colors = require("colors");
 const Users = require("../models/users");
-const { sendMailFunction, generateOTP, sendOTPviaSMS } = require("./email");
+const { sendMailFunction, generateOTP, sendOTPviaSMS } = require("../utils/email");
 const { createJwtToken } = require("../middleware/auth");
 require("dotenv").config();
 
 let otpCache = {};
+
+// @des:signup api
+// method:post
+// api:/api/signup
 
 exports.post_signup = async (req, res) => {
     try {
@@ -48,6 +52,10 @@ exports.post_signup = async (req, res) => {
     }
 };
 
+// @des:Login api
+// method:post
+// api:/api/login
+
 exports.post_login = async (req, res) => {
     console.log(req.body);
     try {
@@ -67,6 +75,9 @@ exports.post_login = async (req, res) => {
         }
     } catch (error) {}
 };
+// @des:verify otp api
+// method:post
+// api:/api/verify-otp
 
 exports.verify_otp = async (req, res) => {
     const { otp, source } = req.body;

@@ -8,11 +8,19 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 const Header = () => {
     const navigate = useNavigate();
+
+    const [location, setLocation] = useState("kerala");
     const [currentUser, setCurrentUser] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    const handleChange = (e)=>{
+        setLocation(e.target.value)
+    }
+
+
     const checkUser = async () => {
         const sessionToken = localStorage.getItem("token");
         console.log({ sessionToken });
@@ -41,7 +49,7 @@ const Header = () => {
                     <span>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </span>
-                    <input type="search" value="india" />
+                    <input type="search" value={location} onChange={handleChange} />
                 </div>
                 <div className="search_box">
                     <input type="search" placeholder="Find Cars, Mobile Phones nad more..." />
@@ -50,7 +58,7 @@ const Header = () => {
                     </span>
                 </div>
                 <h4 className="language_div">ENGLISH</h4>
-                <span className="icons" >
+                <span className="icons">
                     <FontAwesomeIcon icon={faComment} />
                 </span>
                 <span className="icons">
